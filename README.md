@@ -113,7 +113,8 @@ POST localhost:3000/
 
 si en este momento tenemos un servicio que guarda un paciente, celebremos
 
-===================================================================================================
+------------------------------------------------------------------------------------
+
 Hasta ahora todo "normal", es momento de emitir nuestros primeros eventos de kafka
 
 detenemos nuestro rail server
@@ -172,7 +173,8 @@ Revisamos con Kafka Tool y veremos que nuestro mensaje esta publicado.
 
 si vemos un topico llamado "patients" y un evento de creacion de Benito Benitez, tenemos un microservicio de alta de pacientes, celebremos
 
-===================================================================================================
+------------------------------------------------------------------------------------
+
 Y ahora, vamos a crear un servicio de mensajeria
 
 Abrimos ventana 3
@@ -229,7 +231,8 @@ Inline processing of topic patients with 1 messages took 3 ms
 
 Si, ya procesamos mensajes en la cola, celebremos
 
-===================================================================================================
+------------------------------------------------------------------------------------
+
 Es hora de publicar un evento al enviar el mensaje
 
 detenemos karafka server con ctrl+c
@@ -271,5 +274,6 @@ revisamos los mensajes con Kafka Tool
 
 si ahora tenemos el mensaje en el topico de patiens y un mensaje en el topico de messages, celebremos
 
-===================================================================================================
+------------------------------------------------------------------------------------
+
 y la historia continua
