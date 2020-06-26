@@ -133,11 +133,10 @@ $ karafka install
 Instalar Kafka Tool
 https://www.kafkatool.com/download.html
 
-En ventana 2
-	Iniciar Kafka << TARDA >>
-	```
-	$ docker-compose up
-	```
+En ventana 2, iniciar Kafka
+```
+$ docker-compose up
+```
 
 Regresamos a ventana 1
 
