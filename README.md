@@ -121,29 +121,35 @@ detenemos nuestro rail server
 
 Agregar la gema Karafka
 agregar la linea ```gem 'karafka'``` al Gemfile
+```
 $ bundle install
+```
 
 Instalamos Karafka en nuestra aplicacion
+```
 $ karafka install
+```
 
 Instalar Kafka Tool
 https://www.kafkatool.com/download.html
 
 En ventana 2
 	Iniciar Kafka << TARDA >>
+	```
 	$ docker-compose up
+	```
 
 Regresamos a ventana 1
 
 creamos un responder /app/responders/patient_responder.rb
-
+```
 class PatientResponder < ApplicationResponder
     topic :patients
     def respond(patient)
         respond_to :patients, patient.to_json
     end
 end
-
+```
 
 modificamos el /app/controllers/patients_controller.rb
 
@@ -158,16 +164,20 @@ modificamos el /app/controllers/patients_controller.rb
         end
     end
 ```
-iniciamos nuestro rails server
+
+Iniciamos nuestro rails server
+```
 $ rails server
+```
 
 Ejecutamos una prueba desde postman
+```
 POST localhost:3000/
 {
     "nombre":"Benito",
     "apellido":"Benitez"
 }
-
+```
 
 Revisamos con Kafka Tool y veremos que nuestro mensaje esta publicado.
 
@@ -179,18 +189,26 @@ Y ahora, vamos a crear un servicio de mensajeria
 
 Abrimos ventana 3
 regresamos al directorio microservicios
+```
 $ cd microservicios
+```
 
 Crear nuevo proyecto de Rails
+```
 $ rails new messaging --api
 $ cd messaging
+```
 
 Agregar la gema Karafka
 agregar la linea ```gem 'karafka'``` al Gemfile
+```
 $ bundle install
+```
 
 Instalar Karafka
+```
 $ karafka install
+```
 
 Creamos un consumer /app/consumers/patient_consumer.rb
 ```
@@ -214,8 +232,9 @@ registramos el consumer karafka.rb
 ```
 
 iniciamos el server de karafka (tambien debe estar corriendo el api de rails microservicios/patients> rails server)
+```
 $ karafka server
-
+```
 
 revisamos el log del servicio de messaging y debemos encontrar el mensaje impreso
 ```
@@ -247,7 +266,6 @@ class MessageResponder < ApplicationResponder
 end
 ```
 
-
 y notificamos cuando enviamos el mensaje /app/consumers/patient_consumer.rb
 ```
 class PatientConsumer < ApplicationConsumer
@@ -261,14 +279,18 @@ end
 ```
 
 iniciamos karafka server
+```
 $ karafka server
+```
 
 Ejecutamos una prueba desde postman
+```
 POST localhost:3000/
 {
     "nombre":"Daniel",
     "apellido":"Dominguez"
 }
+```
 
 revisamos los mensajes con Kafka Tool
 
