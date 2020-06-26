@@ -1,10 +1,21 @@
-# karafka-tutorial
-A basic tutorial for Karafka
-
 Tutorial Karafka
 ================
 
-docker-compose.yml
+Un tutorial basico de Karafka
+
+prerequisitos
+=============
+tener docker (https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+y docker-compose instalados (https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
+tener ruby 2.6 preferiblemente con rvm
+
+
+Crear carpeta de microservicios
+```
+$ mkdir microservicios
+```
+
+Crea un archivo docker-compose.yml con el siguiente contenido
 ```
 version: '2'
 
@@ -35,22 +46,7 @@ services:
       - zookeeper-server
 ```
 
-
-
-
-prerequisitos
-=============
-tener docker (https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-y docker-compose instalados (https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
-tener ruby 2.6 preferiblemente con rvm
-
-
-Crear carpeta de microservicios
-```
-$ mkdir microservicios
-```
-
-descargar el archivo docker-compose.yml de este repo >TBD< y descargar las imagenes corriendo el siguiente comando en la carpeta donde esta el archivo docker-compose.yml
+Descargar las imagenes requeridas corriendo el siguiente comando en la carpeta donde creaste el archivo docker-compose.yml
 ```
 $ docker-compose pull
 ```
