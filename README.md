@@ -115,7 +115,7 @@ si en este momento tenemos un servicio que guarda un paciente, celebremos
 
 ------------------------------------------------------------------------------------
 
-Hasta ahora todo "normal", es momento de emitir nuestros primeros eventos de kafka
+Hasta ahora todo "normal", es momento de enviar nuestro primer evento a kafka
 
 detenemos nuestro rail server
 
@@ -129,6 +129,23 @@ Instalamos Karafka en nuestra aplicacion
 ```
 $ karafka install
 ```
+
+Agregamos al final del archivo config/environment.rb la siguiente linea
+```
+require Rails.root.join(Karafka.boot_file)
+```
+
+En el archivo karafka.rb modificamos el nombre con el que kafka identificara a nuestra aplicacion
+```
+class KarafkaApp < Karafka::App
+  setup do |config|
+    config.kafka.seed_brokers = %w[kafka://kafka:9092]
+    config.client_id = 'example_app' # cambia este valor
+    config.logger = Rails.logger
+  end
+```
+
+Esto es importante porque si tienes dos aplicaciones con el mismo client_id kafka pensara que son una y la misma, enviando un batch de mensajes a la primera que se lo solicite.
 
 Instalar Kafka Tool
 https://www.kafkatool.com/download.html
